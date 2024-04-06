@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('alumno', function (Blueprint $table) {
+        Schema::create('student', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('alumn_DNI')->unique();
             $table->string('nombre', 100);
             $table->string('apellido', 100);
             $table->integer('asistencias')->default(0);
             $table->date('fecha_nac')->nullable();
+            $table->enum('grupo', ['A', 'B'])->default('A');
             $table->timestamps();
         });
     }
@@ -27,6 +28,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('alumno');
+        Schema::dropIfExists('student');
     }
 };
+
+
+
