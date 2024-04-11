@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
+use App\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,5 +20,11 @@ Route::get('/', function () {
 });
 
 Route::get('/student',[StudentController::class,'index']);
+
 Route::get('/student/form',[StudentController::class,'form']);
+
 Route::post('/student/form', [StudentController::class, 'store'])->name('student.store');
+
+Route::get('/student/delete',[StudentController::class, 'viewDelete']);
+
+Route::delete('/student/delete',[StudentController::class,'delete'])->name('student.delete');;
